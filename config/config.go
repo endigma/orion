@@ -38,5 +38,17 @@ func ReadPackageToml(bytes []byte) (*Package, error) {
 		return nil, fmt.Errorf("failed to unmarshal package file: %w", err)
 	}
 
+	if pkg.Author == "" {
+		pkg.Author = "Unknown"
+	}
+
+	if pkg.Name == "" {
+		return nil, fmt.Errorf("package name is required")
+	}
+
+	if len(pkg.Compositions) == 0 {
+		return nil, fmt.Errorf("at least one composition is required")
+	}
+
 	return &pkg, nil
 }
