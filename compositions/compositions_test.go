@@ -5,6 +5,7 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/alecthomas/assert/v2"
 	"github.com/hexops/autogold/v2"
 )
 
@@ -19,9 +20,8 @@ func TestGeneration(t *testing.T) {
 		writer := strings.Builder{}
 
 		err := RenderHeader(&writer, comp)
-		if err != nil {
-			t.Errorf("RenderComposition() failed: %v", err)
-		}
+
+		assert.NoError(t, err)
 
 		autogold.ExpectFile(t, autogold.Raw(writer.String()))
 	})
@@ -30,9 +30,8 @@ func TestGeneration(t *testing.T) {
 		writer := strings.Builder{}
 
 		err := RenderComposition(&writer, comp)
-		if err != nil {
-			t.Errorf("RenderComposition() failed: %v", err)
-		}
+
+		assert.NoError(t, err)
 
 		autogold.ExpectFile(t, autogold.Raw(writer.String()))
 	})
@@ -44,9 +43,7 @@ func TestCleanSQF(t *testing.T) {
 		want := "Test = 1;"
 		got := CleanSQF(dirty)
 
-		if got != want {
-			t.Fatalf("CleanSQF() = %v, want %v", got, want)
-		}
+		assert.Equal(t, got, want)
 	})
 
 	t.Run("multiline comments", func(t *testing.T) {
@@ -89,9 +86,7 @@ func TestCleanSQF(t *testing.T) {
 
 	t.Run("entirety of ezm", func(t *testing.T) {
 		dirty, err := os.ReadFile("testdata/TestCleanSQF/entirety_of_ezm.sqf")
-		if err != nil {
-			t.Fatalf("os.ReadFile() failed: %v", err)
-		}
+		assert.NoError(t, err)
 
 		got := CleanSQF(string(dirty))
 
