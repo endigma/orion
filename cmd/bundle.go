@@ -29,20 +29,20 @@ var bundle = &cli.Command{
 		pkgFile := c.String("package")
 		outputDir := c.String("output")
 
-		log.Info("compiling composition", "pkgfile", pkgFile, "outputDir", outputDir)
+		log.Debug("bundling compositions", "pkgfile", pkgFile, "outputDir", outputDir)
 
 		pkg, err := config.ReadPackageFile(pkgFile)
 		if err != nil {
 			return fmt.Errorf("error reading package file: %w", err)
 		}
 
-		log.Info("loaded package", "pkg", pkg)
+		log.Debug("loaded package config", "pkg", pkg)
 
 		os.Chdir(filepath.Dir(pkgFile))
 
 		// Compile compositions
 		for _, comp := range pkg.Compositions {
-			log.Info("generating composition", "comp", comp)
+			log.Info("bundling composition", "comp", comp.Name, "category", comp.Category, "init", comp.InitFile)
 
 			// Read contents of init file
 			initFile, err := os.ReadFile(comp.InitFile)

@@ -23,6 +23,19 @@ func main() {
 				Value:   "orion.toml",
 				Usage:   "Path to package file",
 			},
+			&cli.BoolFlag{
+				Name:    "verbose",
+				Aliases: []string{"v"},
+				Usage:   "Set the log level",
+				Value:   false,
+				Action: func(ctx context.Context, c *cli.Command, verbose bool) error {
+					if verbose {
+						log.SetLevel(log.DebugLevel)
+					}
+
+					return nil
+				},
+			},
 		},
 	}
 
