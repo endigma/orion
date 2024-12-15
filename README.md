@@ -34,3 +34,9 @@ initFile = "path/relative/to/orion.toml/to/script2"
 ```
 
 And run `orion -p orion.toml -o [desired output folder]`. This functionality will eventually be moved under a subcommand (likely `orion bundle`)
+
+# Copyright
+
+Orion is licenced under the MIT License.
+
+Orion embeds code from [Enhanced Zeus Modules](https://github.com/expung3d/Enhanced-Zeus-Modules) for compliance testing. The license of these files, including the minified version, is that of the upstream repository as of [c451dd88](https://github.com/expung3d/Enhanced-Zeus-Modules/tree/c451dd88270940911b03573c52579d11f029f686). It is unlikely this version of EZM will ever need to be updated, as it's only used as a large sample of SQF source code.
