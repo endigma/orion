@@ -33,7 +33,7 @@ category = "My Project Category"
 initFile = "path/relative/to/orion.toml/to/script2"
 ```
 
-And run `orion -p orion.toml -o [desired output folder]`. This functionality will eventually be moved under a subcommand (likely `orion bundle`)
+And run `orion bundle` in the directory containing `orion.toml`. 
 
 # Copyright
 
