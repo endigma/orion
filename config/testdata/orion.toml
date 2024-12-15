@@ -1,0 +1,8 @@
+name = "Test Package"
+author = "Test Author"
+
+[[compositions]]
+name = "Test Composition"
+category = "Test Category"
+initFile = "testdata/init.sqf"
+version = "0.1.0"

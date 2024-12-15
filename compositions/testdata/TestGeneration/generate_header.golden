@@ -1,0 +1,8 @@
+version=54;
+name="Test";
+author="Test Author";
+category="Test Category";
+requiredAddons[]=
+{
+	"A3_Structures_F_Mil_Helipads"
+};
